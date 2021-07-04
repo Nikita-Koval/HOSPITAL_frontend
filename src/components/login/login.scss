@@ -1,0 +1,26 @@
+.entryCont {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-left: 1em;
+  padding: 1em;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.linkBtn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  align-items: flex-end;
+}
+
+.entryText {
+  width: 100%;
+  display: block;
+}
+
+.formBlockBtn {
+  margin-top: 1em;
+}

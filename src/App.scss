@@ -1,0 +1,47 @@
+body {
+  background: #52bbfc;
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+}
+
+.headerApp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15%;
+  width: 100%;
+  background: inherit;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
+
+  .headerLogo {
+    width: 10%;
+  }
+
+  .headerTitle {
+    text-align: center;
+    width: 60%;
+    font-size: 24px;
+}
+}
+
+.appCont {
+  margin-top: 2rem;
+  width: 100%;
+  height: 50%;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 70%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.App-logobig {
+  max-height: 400px;
+  width: 45%;
+  margin-top: 8rem;
+}
