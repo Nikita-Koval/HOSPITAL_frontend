@@ -8,33 +8,44 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 const Login = () => {
-    let history = useHistory();
+const history = useHistory();
+  const [login, setTextLog] = useState("");
+  const [password, setTextPass] = useState("");
 
-    const [login, setTextLog] = useState("");
-    const [password, setTextPass] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const res = await axios.post("localhost:5000/api/auth/login", {
+      email: formData.get("login"),
+      password: formData.get("password"),
+      headers: {
+        'Content-type': 'application/json;charset=utf-8',
+        'Access-Control-Allow-Origin': '*'
+      }
+    }).then((res) => {
+      localStorage.setItem('token', res.token.token)
+      history.push("/allNotes")
+    });
+}
 
-    const handleSubmit = async (e) => {
-        
-    }
-
-    return (
-        <div>
-            <Header>Войти в систему</Header>
-            <div className="appCont">
-                <div className="container">
-                    <img src={logolarge} className="App-logobig" alt="logo" />
-                    <form onSubmit={handleSubmit} className="entryCont">
-                        <p className="entryText">Войти в систему</p>
-                        <div className="formBlock">
-                            <label className='entryText'>Login:</label>
-                            <TextField name="login" type="email" value={login} placeholder="Login" variant="outlined" />
+  return (
+      <div>
+        <Header>Войти в систему</Header>
+        <div className="appCont">
+          <div className="container">
+            <img src={logolarge} className="App-logobig" alt="logo" />
+            <form onSubmit={handleSubmit} className="entryCont">
+              <h1 className="welcomeText">Войти в систему</h1>
+              <div className="formBlock">
+                <label className='entryText'>Login:</label>
+                <TextField id='login' name="login" onChange={(e) => setTextLog(e.target.value)} type="email" value={login} placeholder="Login" variant="outlined" />
                         </div>
                         <div className="formBlock">
                             <label className='entryText'>Password:</label>
-                            <TextField name="password" type="text" value={password} placeholder="Password" variant="outlined" />
+                            <TextField id='password' name="password" onChange={(e) => setTextPass(e.target.value)} type="text" value={password} placeholder="Password" variant="outlined" />
                         </div>
                         <div className="formBlockBtn">
-                            <Button variant="contained" color="primary" type="submit" href="#contained-buttons">Войти</Button>
+                            <Button variant="contained" color="primary" type="submit">Войти</Button>
                             <Link to="/registration" className="linkBtn">Зарегистрироваться</Link>
                         </div>
                     </form>
