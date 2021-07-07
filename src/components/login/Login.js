@@ -39,20 +39,20 @@ const history = useHistory();
               <div className="formBlock">
                 <label className='entryText'>Login:</label>
                 <TextField id='login' name="login" onChange={(e) => setTextLog(e.target.value)} type="email" value={login} placeholder="Login" variant="outlined" />
-                        </div>
-                        <div className="formBlock">
-                            <label className='entryText'>Password:</label>
-                            <TextField id='password' name="password" onChange={(e) => setTextPass(e.target.value)} type="text" value={password} placeholder="Password" variant="outlined" />
-                        </div>
-                        <div className="formBlockBtn">
-                            <Button variant="contained" color="primary" type="submit">Войти</Button>
-                            <Link to="/registration" className="linkBtn">Зарегистрироваться</Link>
-                        </div>
-                    </form>
-                </div>
+              </div>
+              <div className="formBlock">
+                <label className='entryText'>Password:</label>
+                <TextField id='password' name="password" onChange={(e) => setTextPass(e.target.value)} type="text" value={password} placeholder="Password" variant="outlined" />
+              </div>
+              <div className="formBlockBtn">
+                <Button variant="contained" color="primary" type="submit">Войти</Button>
+                <Link to="/registration" className="linkBtn">Зарегистрироваться</Link>
+              </div>
+            </form>
             </div>
+          </div>
         </div>
-    )
+  )
 }
 
 export default Login;
