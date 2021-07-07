@@ -17,11 +17,12 @@ const history = useHistory();
     const formData = new FormData(e.target);
     const res = await axios.post("localhost:5000/api/auth/login", {
       email: formData.get("login"),
-      password: formData.get("password"),
-      headers: {
-        'Content-type': 'application/json;charset=utf-8',
-        'Access-Control-Allow-Origin': '*'
-      }
+      password: formData.get("password")}, {
+        headers: 
+          {
+            'Content-type': 'application/json;charset=utf-8',
+            'Access-Control-Allow-Origin': '*'
+          }
     }).then((res) => {
       localStorage.setItem('token', res.token.token)
       history.push("/allNotes")
@@ -38,14 +39,31 @@ const history = useHistory();
               <h1 className="welcomeText">Войти в систему</h1>
               <div className="formBlock">
                 <label className='entryText'>Login:</label>
-                <TextField id='login' name="login" onChange={(e) => setTextLog(e.target.value)} type="email" value={login} placeholder="Login" variant="outlined" />
+                <TextField 
+                id='login' 
+                name="login" 
+                onChange={(e) => setTextLog(e.target.value)} 
+                type="email" 
+                value={login} 
+                placeholder="Login" 
+                variant="outlined" />
               </div>
               <div className="formBlock">
                 <label className='entryText'>Password:</label>
-                <TextField id='password' name="password" onChange={(e) => setTextPass(e.target.value)} type="text" value={password} placeholder="Password" variant="outlined" />
+                <TextField 
+                id='password' 
+                name="password" 
+                onChange={(e) => setTextPass(e.target.value)} 
+                type="text" 
+                value={password} 
+                placeholder="Password" 
+                variant="outlined" />
               </div>
               <div className="formBlockBtn">
-                <Button variant="contained" color="primary" type="submit">Войти</Button>
+                <Button 
+                variant="contained" 
+                color="primary" 
+                type="submit">Войти</Button>
                 <Link to="/registration" className="linkBtn">Зарегистрироваться</Link>
               </div>
             </form>
