@@ -17,7 +17,7 @@ const Header = (props) => {
             <p className="headerTitle">
                 {props.children}
             </p>
-            {props.button && <button onClick={() => exitFunc()} className="headerBtn">Выход</button>}
+            {props.button && <button onClick={() => exitFunc()}>Выход</button>}
         </header>
     )
 }
