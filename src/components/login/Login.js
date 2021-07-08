@@ -13,20 +13,25 @@ const history = useHistory();
   const [password, setTextPass] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const res = await axios.post("localhost:5000/api/auth/login", {
-      email: formData.get("login"),
-      password: formData.get("password")}, {
-        headers: 
-          {
-            'Content-type': 'application/json;charset=utf-8',
-            'Access-Control-Allow-Origin': '*'
-          }
-    }).then((res) => {
-      localStorage.setItem('token', res.token.token)
-      history.push("/allNotes")
-    });
+    if(login.length < 6) {
+      alert('Некорректные данные')
+    } else {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const res = await axios.post("localhost:5000/api/auth/login", {
+        email: formData.get("login"),
+        password: formData.get("password")}, {
+          headers: 
+            {
+              'Content-type': 'application/json;charset=utf-8',
+              'Access-Control-Allow-Origin': '*'
+            }
+      }).then((res) => {
+        localStorage.setItem('token', res.token.token)
+        history.push("/allNotes")
+      });
+  }
+
 }
 
   return (
@@ -40,30 +45,30 @@ const history = useHistory();
               <div className="formBlock">
                 <label className='entryText'>Login:</label>
                 <TextField 
-                id='login' 
-                name="login" 
-                onChange={(e) => setTextLog(e.target.value)} 
-                type="email" 
-                value={login} 
-                placeholder="Login" 
-                variant="outlined" />
+                  id='login' 
+                  name="login" 
+                  onChange={(e) => setTextLog(e.target.value)} 
+                  type="email" 
+                  value={login} 
+                  placeholder="Login" 
+                  variant="outlined" />
               </div>
               <div className="formBlock">
                 <label className='entryText'>Password:</label>
                 <TextField 
-                id='password' 
-                name="password" 
-                onChange={(e) => setTextPass(e.target.value)} 
-                type="text" 
-                value={password} 
-                placeholder="Password" 
-                variant="outlined" />
+                  id='password' 
+                  name="password" 
+                  onChange={(e) => setTextPass(e.target.value)} 
+                  type="text" 
+                  value={password} 
+                  placeholder="Password" 
+                  variant="outlined" />
               </div>
               <div className="formBlockBtn">
                 <Button 
-                variant="contained" 
-                color="primary" 
-                type="submit">Войти</Button>
+                  variant="contained" 
+                  color="primary" 
+                  type="submit">Войти</Button>
                 <Link to="/registration" className="linkBtn">Зарегистрироваться</Link>
               </div>
             </form>

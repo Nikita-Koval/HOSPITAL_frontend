@@ -41,40 +41,40 @@ const Registration = () => {
               <div className="formBlock">
                 <label className='entryText'>Login:</label>
                 <TextField 
-                id='login' 
-                name="login" 
-                onChange={(e) => setLog(e.target.value)} 
-                type="email" 
-                value={login} 
-                placeholder="Login" 
-                variant="outlined" />
+                  id='login' 
+                  name="login" 
+                  onChange={(e) => setLog(e.target.value)} 
+                  type="email" 
+                  value={login} 
+                  placeholder="Login" 
+                  variant="outlined" />
               </div>
                 <div className="formBlock">
                   <label className='entryText'>Password:</label>
                   <TextField 
-                  id='password' 
-                  name="password" onChange={(e) => setPass(e.target.value)} 
-                  type="text" 
-                  value={password} 
-                  placeholder="Password"
-                  variant="outlined" />
+                    id='password' 
+                    name="password" onChange={(e) => setPass(e.target.value)} 
+                    type="text" 
+                    value={password} 
+                    placeholder="Password"
+                    variant="outlined" />
                 </div>
                 <div className="formBlock">
                   <label className='entryText'>Repeat password:</label>
                   <TextField 
-                  id='repPassword' 
-                  name="repPassword" 
-                  onChange={(e) => setRepPass(e.target.value)} 
-                  type="text" 
-                  value={repPassword} 
-                  placeholder="Repeat password" 
-                  variant="outlined" />
+                    id='repPassword' 
+                    name="repPassword" 
+                    onChange={(e) => setRepPass(e.target.value)} 
+                    type="text" 
+                    value={repPassword} 
+                    placeholder="Repeat password" 
+                    variant="outlined" />
                 </div>
                 <div className="formBlockBtn">
                   <Button 
-                  variant="contained" 
-                  color="primary" 
-                  type="submit">Зарегистрироваться</Button>
+                    variant="contained" 
+                    color="primary" 
+                    type="submit">Зарегистрироваться</Button>
                   <Link to="/login" className="linkBtn">Авторизоваться</Link>
                 </div>
             </form>
