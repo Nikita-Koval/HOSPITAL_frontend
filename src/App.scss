@@ -20,6 +20,7 @@ body {
   }
 
   .headerTitle {
+    margin: 1em;
     justify-content: space-around;
     display: flex;
     text-align: center;
@@ -48,12 +49,11 @@ body {
   margin-top: 8rem;
 }
 
-
-
 .extBtn {
   margin-top: 1em;
+
   .MuiButton-contained {
     max-height: 50px;
     width: 120px;
-}
+  }
 }

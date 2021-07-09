@@ -6,19 +6,17 @@ import FormList from '../allNotesFormList/FormList';
 import axios from 'axios';
 
 const AllNotes = () => {
-const history = useHistory();
+  const history = useHistory();
 
-return (
-  <div>
-    <Header>
-      Приёмы
-      <span className='extBtn'>
-        <Button variant="contained">Выход</Button>
-      </span>
-    </Header>
-    <FormList />
-  </div>
-)
+  return (
+    <div>
+      <Header>
+        Приёмы
+          <Button variant="contained">Выход</Button>
+      </Header>
+      <FormList />
+    </div>
+  )
 }
 
 export default AllNotes;

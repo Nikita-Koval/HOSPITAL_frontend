@@ -18,7 +18,8 @@ const history = useHistory();
       || (!/[0-9]/.test(password)) 
       || ((login.length && password.length) < 6)
     ) {
-        alert('Некорректные данные. Пароль должен содержать латинские символы и цифры.') } else {
+        alert('Некорректные данные. Пароль должен содержать латинские символы и цифры.') 
+      } else {
           e.preventDefault();
           const formData = new FormData(e.target);
           axios.post("http://localhost:5000/api/auth/login", {
