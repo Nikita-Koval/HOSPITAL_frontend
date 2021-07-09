@@ -4,7 +4,8 @@ Switch,
 Route,
 Link,
 Redirect,
-useHistory  } from 'react-router-dom';
+useHistory  
+} from 'react-router-dom';
 import logolarge from '../../images/logolarge.svg';
 import Header from '../header/Header';
 import axios from 'axios';
@@ -19,15 +20,32 @@ const Registration = () => {
   const [repPassword, setRepPass] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target)
-    await axios.post("localhost:5000/api/auth/register", {
-      email: formData.get("login"),
-      password: formData.get("password"),
-    }).then((result) => {
-      localStorage.setItem("token", result.data.token)
-      history.push("/allNotes")
-    });
+    if(password !== repPassword) {
+      alert('Не совпадают пароли') 
+    } else {
+      if((!/[A-Z]/.test(password)) 
+        && (!/[a-z]/.test(password)) 
+        || (!/[0-9]/.test(password)) 
+        || ((login.length && password.length) < 6)
+      ) {
+        alert('Некорректные данные. Пароль должен содержать латинские символы и цифры.') } else {
+          e.preventDefault();
+        const formData = new FormData(e.target)
+        await axios.post("http://localhost:5000/api/auth/register", {
+          email: formData.get("login"),
+          password: formData.get("password"),
+        }, {
+              headers: 
+                {
+                  'Content-type': 'application/json;charset=utf-8',
+                  'Access-Control-Allow-Origin': '*'
+                }
+            }).then((result) => {
+              localStorage.setItem("token", result.data.token)
+              history.push("/allNotes")
+            });
+        }
+    }
   }
 
   return (
@@ -41,17 +59,19 @@ const Registration = () => {
               <div className="formBlock">
                 <label className='entryText'>Login:</label>
                 <TextField 
+                  required
                   id='login' 
                   name="login" 
                   onChange={(e) => setLog(e.target.value)} 
-                  type="email" 
+                  type="text" 
                   value={login} 
                   placeholder="Login" 
                   variant="outlined" />
               </div>
                 <div className="formBlock">
                   <label className='entryText'>Password:</label>
-                  <TextField 
+                  <TextField
+                    required  
                     id='password' 
                     name="password" onChange={(e) => setPass(e.target.value)} 
                     type="text" 
